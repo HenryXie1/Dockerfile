@@ -2,7 +2,7 @@ FROM oraclelinux:7-slim
 
 RUN rm /etc/yum.repos.d/*
 COPY public-yum-ol7.repo /etc/yum.repos.d/public-yum-ol7.repo
-RUN echo "proxy=http://10.68.69.53:80" >> /etc/yum.conf && \
+RUN echo "proxy=http://<proxy server>:80" >> /etc/yum.conf && \
     yum -y --setopt=tsflags=nodocs update && \
     yum -y --setopt=tsflags=nodocs install httpd && \
     yum clean all
