@@ -4,13 +4,12 @@
 # Originally written for Fedora-Dockerfiles by
 #   scollier <scollier@redhat.com>
 
-FROM oraclelinux:7
+FROM oraclelinux:6
 
 RUN rm /etc/yum.repos.d/*
 COPY public-yum-ol7.repo /etc/yum.repos.d/public-yum-ol7.repo
 COPY pgdg-oraclelinux95-9.5-3.noarch.rpm /tmp
 RUN rpm -iUvh /tmp/pgdg-oraclelinux95-9.5-3.noarch.rpm
-RUN mkdir -p /usr/share/man/man1
 RUN yum -y update; yum clean all
 RUN yum -y install sudo epel-release; yum clean all
 RUN yum -y install postgresql95-server postgresql95 postgresql95-contrib supervisor pwgen; yum clean all
@@ -23,9 +22,7 @@ ADD ./start_postgres.sh /start_postgres.sh
 RUN chmod +x /usr/bin/postgresql-setup
 RUN chmod +x /start_postgres.sh
 
-#add ln to fix initdb not found issue
-RUN ln -s /usr/pgsql-9.5/bin/initdb  /usr/bin/initdb
-RUN /usr/bin/postgresql-setup initdb 
+RUN /usr/bin/postgresql-setup initdb
 
 ADD ./postgresql.conf /var/lib/pgsql/data/postgresql.conf
 
