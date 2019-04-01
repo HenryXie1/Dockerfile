@@ -18,20 +18,12 @@ RUN yum -y install postgresql95-server postgresql95 postgresql95-contrib supervi
 ADD ./postgresql-setup /usr/bin/postgresql-setup
 ADD ./supervisord.conf /etc/supervisord.conf
 ADD ./start_postgres.sh /start_postgres.sh
+ADD ./postgresql.conf /tmp/postgresql.conf
 
-#Sudo requires a tty. fix that.
 RUN chmod +x /usr/bin/postgresql-setup
 RUN chmod +x /start_postgres.sh
-
-#add ln to fix initdb not found issue
 RUN ln -s /usr/pgsql-9.5/bin/initdb  /usr/bin/initdb
-RUN /usr/bin/postgresql-setup initdb 
-
-ADD ./postgresql.conf /var/lib/pgsql/data/postgresql.conf
-
-RUN chown -v postgres.postgres /var/lib/pgsql/data/postgresql.conf
-
-RUN echo "host    all             all             0.0.0.0/0               md5" >> /var/lib/pgsql/data/pg_hba.conf
+RUN echo "export PATH=$PATH:/usr/pgsql-9.5/bin" >> /root/.bash_profile
 
 VOLUME ["/var/lib/pgsql"]
 
