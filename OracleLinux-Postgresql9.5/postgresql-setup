@@ -27,7 +27,7 @@ fi
 
 # this parsing technique fails for PGDATA pathnames containing spaces,
 # but there's not much I can do about it given systemctl's output format...
-PGDATA="/var/lib/pgsql/9.5/data"
+PGDATA="/u02/pgsql-data/9.5/data"
 # PGDATA=`systemctl show -p Environment "${SERVICE_NAME}.service" |
 #                 sed 's/^Environment=//' | tr ' ' '\n' |
 #                 sed -n 's/^PGDATA=//p' | tail -n 1`
@@ -45,10 +45,10 @@ PGPORT="5432"
 # fi
 
 # Log file for initdb
-PGLOG=/var/lib/pgsql/9.5/initdb.log
+PGLOG=/u02/pgsql-data/9.5/initdb.log
 
 # Log file for pg_upgrade
-PGUPLOG=/var/lib/pgsql/9.5/pgupgrade.log
+PGUPLOG=/u02/pgsql-data/9.5/pgupgrade.log
 
 export PGDATA
 export PGPORT
@@ -65,7 +65,7 @@ script_result=0
 # code shared between initdb and upgrade actions
 perform_initdb(){
     if [ ! -e "$PGDATA" ]; then
-        mkdir "$PGDATA" || return 1
+        mkdir -p "$PGDATA" || return 1
         chown postgres:postgres "$PGDATA"
         chmod go-rwx "$PGDATA"
     fi

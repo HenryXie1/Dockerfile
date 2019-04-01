@@ -3,7 +3,7 @@
 DB_NAME=${POSTGRES_DB:-}
 DB_USER=${POSTGRES_USER:-}
 DB_PASS=${POSTGRES_PASSWORD:-}
-PG_CONFDIR="/var/lib/pgsql/9.5/data"
+PG_CONFDIR="/u02/pgsql-data/9.5/data"
 export PATH=$PATH:/usr/pgsql-9.5/bin
 
 __create_user() {
@@ -50,7 +50,7 @@ supervisord -n
 __preparefordb() {
    
   /usr/bin/postgresql-setup initdb
-  chown -v postgres.postgres /var/lib/pgsql/9.5/data/postgresql.conf
+  chown -v postgres.postgres ${PG_CONFDIR}/postgresql.conf
   
 }
 

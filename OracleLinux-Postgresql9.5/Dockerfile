@@ -25,7 +25,7 @@ RUN chmod +x /start_postgres.sh
 RUN ln -s /usr/pgsql-9.5/bin/initdb  /usr/bin/initdb
 RUN echo "export PATH=$PATH:/usr/pgsql-9.5/bin" >> /root/.bash_profile
 
-VOLUME ["/var/lib/pgsql"]
+VOLUME ["/u02/pgsql-data"]
 
 EXPOSE 5432
 
