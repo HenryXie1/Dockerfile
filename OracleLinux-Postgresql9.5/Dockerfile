@@ -19,11 +19,11 @@ ADD ./postgresql-setup /usr/bin/postgresql-setup
 ADD ./supervisord.conf /etc/supervisord.conf
 ADD ./start_postgres.sh /start_postgres.sh
 ADD ./postgresql.conf /tmp/postgresql.conf
-
+ADD ./.pgsql_profile  /var/lib/pgsql/.pgsql_profile
+RUN chown 26:26 /var/lib/pgsql/.pgsql_profile
 RUN chmod +x /usr/bin/postgresql-setup
 RUN chmod +x /start_postgres.sh
 RUN ln -s /usr/pgsql-9.5/bin/initdb  /usr/bin/initdb
-RUN echo "export PATH=$PATH:/usr/pgsql-9.5/bin" >> /root/.bash_profile
 
 VOLUME ["/u02/pgsql-data"]
 

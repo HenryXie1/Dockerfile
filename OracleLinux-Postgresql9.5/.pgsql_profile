@@ -1,0 +1,3 @@
+PGDATA=/u02/pgsql-data/9.5/data
+export PGDATA
+export PATH=/usr/local/bin:/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/usr/pgsql-9.5/bin
