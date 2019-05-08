@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Saved on Tue Jan 09 04:12:05 UTC 2018</comment>
+<entry key="cache.caching">false</entry>
+<entry key="cache.directory">/tmp/apex/cache</entry>
+<entry key="cache.duration">days</entry>
+<entry key="cache.expiration">7</entry>
+<entry key="cache.maxEntries">500</entry>
+<entry key="cache.monitorInterval">60</entry>
+<entry key="cache.procedureNameList"/>
+<entry key="cache.type">lru</entry>
+<entry key="db.hostname">test-db-service.default.svc.cluster.local</entry>
+<entry key="db.port">1521</entry>
+<entry key="db.servicename">test_oci_19c_stg</entry>
+<entry key="debug.debugger">true</entry>
+<entry key="debug.printDebugToScreen">true</entry>
+<entry key="error.keepErrorMessages">true</entry>
+<entry key="error.maxEntries">50</entry>
+<entry key="jdbc.DriverType">thin</entry>
+<entry key="jdbc.InactivityTimeout">600</entry>
+<entry key="jdbc.InitialLimit">20</entry>
+<entry key="jdbc.MaxConnectionReuseCount">1000</entry>
+<entry key="jdbc.MaxLimit">250</entry>
+<entry key="jdbc.MaxStatementsLimit">10</entry>
+<entry key="jdbc.MinLimit">10</entry>
+<entry key="jdbc.statementTimeout">900</entry>
+<entry key="log.logging">false</entry>
+<entry key="log.maxEntries">50</entry>
+<entry key="misc.compress"/>
+<entry key="misc.defaultPage">apex</entry>
+<entry key="security.crypto.enc.password">yourpassword</entry>
+<entry key="security.crypto.mac.password">yourpassword</entry>
+<entry key="security.disableDefaultExclusionList">false</entry>
+<entry key="security.maxEntries">2000</entry>
+<entry key="security.requestValidationFunction">wwv_flow_epg_include_modules.authorize</entry>
+<entry key="security.validationFunctionType">plsql</entry>
+<entry key="misc.enableOldFOP">true</entry>
+<entry key="procedure.postProcess">apex_util.close_open_db_links</entry>
+<entry key="procedure.preProcess">apex_util.close_open_db_links</entry>
+<entry key="security.verifySSL">true</entry>
+<entry key="security.httpsHeaderCheck">X-Forwarded-Proto: https</entry>
+<entry key="apex.excel2collection">true</entry>
+<entry key="apex.excel2collection.onecollection">true</entry>
+<entry key="apex.excel2collection.name">EXCEL_COLLECTION</entry>
+<entry key="apex.excel2collection.useSheetName">true</entry>
+<entry key="security.oauth.tokenLifetime">36000</entry>
+</properties>
