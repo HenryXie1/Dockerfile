@@ -19,7 +19,8 @@ FROM oraclelinux:7-slim
 ARG release=18
 ARG update=3
 RUN rm /etc/yum.repos.d/*
-RUN echo "proxy=http://10.68.69.53:80" >> /etc/yum.conf
+# add proxy if it is behind proxy
+RUN echo "proxy=http://<proxy server:80" >> /etc/yum.conf
 COPY yum-iad-ol7.repo /etc/yum.repos.d/yum-iad-ol7.repo 
 RUN yum-config-manager --enable ol7_oci_included
 RUN yum-config-manager --enable ol7_oracle_instantclient && \
