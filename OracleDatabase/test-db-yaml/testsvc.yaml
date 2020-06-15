@@ -1,0 +1,14 @@
+testsvc.yaml 
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+     name: oradbauto-db-service
+  name: oradbauto-db-svc
+spec:
+  ports:
+  - port: 1521
+    protocol: TCP
+    targetPort: 1521
+  selector:
+     name: oradbauto-db-service
