@@ -1,0 +1,2 @@
+docker build  --force-rm=true --no-cache=true --build-arg DB_EDITION=ee -t  oracle/database:19.5 .
+
