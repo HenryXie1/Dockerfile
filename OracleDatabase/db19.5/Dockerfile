@@ -69,7 +69,8 @@ RUN chmod ug+x $INSTALL_DIR/*.sh && \
     sync && \
     $INSTALL_DIR/$CHECK_SPACE_FILE && \
     $INSTALL_DIR/$SETUP_LINUX_FILE && \
-    rm -rf $INSTALL_DIR
+    rm -rf $INSTALL_DIR && \
+    yum install -y python3 
 
 
 
@@ -113,10 +114,13 @@ RUN $ORACLE_BASE/oraInventory/orainstRoot.sh && \
     mkdir -p /opt/oracle/fra && \
     chown -R oracle:dba /opt/oracle/fra && \
     mkdir -p /opt/oracle/diag && \
-    chown -R oracle:dba /opt/oracle/diag
+    chown -R oracle:dba /opt/oracle/diag 
 
 USER oracle
 WORKDIR /home/oracle
+RUN curl -L https://raw.githubusercontent.com/oracle/oci-cli/master/scripts/install/install.sh --output ~/install.sh && \
+    chmod 755 ~/install.sh && \
+    ~/install.sh  --accept-all-defaults
 
 HEALTHCHECK --interval=1m --start-period=5m \
    CMD "$ORACLE_BASE/$CHECK_DB_FILE" >/dev/null || exit 1
